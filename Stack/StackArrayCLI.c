@@ -65,7 +65,7 @@ int main() {
         printf("|  P[O]p               |\n");
         printf("|  P[U]sh              |\n");
         printf("|  P[E]ek              |\n");
-        printf("|  P[I]splay           |\n");
+        printf("|  D[I]splay           |\n");
         printf("|  E[X]it              |\n");
         printf("+----------------------+\n");
 
