@@ -1,0 +1,13 @@
+# --- IDE and Editor Folders ---
+.vscode/
+.vs/
+
+# --- Compiled Binaries & Executables ---
+*.exe
+*.o
+*.obj
+*.out
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
