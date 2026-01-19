@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite DSA Roadmap 2026</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --line-color: #30363d;
+            --accent-blue: #58a6ff;
+            --text-main: #c9d1d9;
+            --text-dim: #8b949e;
+            --badge-bg: rgba(56, 139, 253, 0.15);
+            --success: #3fb950;
+            --industry-tag: #8957e5;
+            --academic-tag: #d29922;
+            --advanced-tag: #f85149;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container { max-width: 900px; width: 100%; }
+
+        header { margin-bottom: 40px; text-align: center; }
+        h1 { font-size: 2.2rem; margin: 0 0 10px 0; color: white; }
+        
+        .dashboard {
+            background: var(--card-bg);
+            border: 1px solid var(--line-color);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 20px;
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .date-container { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+        .date-box { flex: 1; min-width: 200px; }
+        label { display: block; font-size: 0.8rem; color: var(--text-dim); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        input[type="date"] {
+            background: var(--bg); border: 1px solid var(--line-color); color: white;
+            padding: 10px; border-radius: 6px; width: 100%; outline: none; font-size: 1rem;
+        }
+
+        .end-date-display {
+            background: rgba(63, 185, 80, 0.1); border: 1px solid var(--success);
+            color: var(--success); padding: 10px; border-radius: 6px; font-weight: bold;
+            display: block; text-align: center; font-size: 1rem;
+        }
+
+        .roadmap { position: relative; padding-left: 50px; }
+        .roadmap::before {
+            content: ''; position: absolute; left: 17px; top: 0; bottom: 0;
+            width: 2px; background: var(--line-color);
+        }
+
+        .phase { position: relative; margin-bottom: 40px; }
+        .circle-marker {
+            position: absolute; left: -42px; top: 5px; width: 18px; height: 18px;
+            border-radius: 50%; border: 4px solid var(--line-color); background: var(--bg); z-index: 2;
+        }
+
+        .phase.completed .circle-marker { border-color: var(--success); background: var(--success); }
+
+        .card {
+            background: var(--card-bg); border: 1px solid var(--line-color);
+            border-radius: 12px; padding: 24px; transition: 0.3s;
+        }
+
+        .card:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+        .phase-id { color: var(--accent-blue); font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; display: block; }
+        
+        .badge {
+            display: inline-block; background: var(--badge-bg); color: var(--accent-blue);
+            font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; margin-bottom: 15px;
+        }
+
+        .task-list { list-style: none; padding: 0; margin: 0; }
+        .task-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.4; }
+
+        input[type="checkbox"] {
+            appearance: none; width: 20px; height: 20px; border: 2px solid var(--line-color);
+            border-radius: 4px; cursor: pointer; position: relative; flex-shrink: 0;
+        }
+
+        input[type="checkbox"]:checked { background: var(--success); border-color: var(--success); }
+        input[type="checkbox"]:checked::after { content: '✔'; position: absolute; color: white; font-size: 14px; left: 3px; top: -1px; }
+        input[type="checkbox"]:checked + span { color: var(--text-dim); text-decoration: line-through; }
+
+        .tag { font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: auto; text-transform: uppercase; white-space: nowrap; }
+        .tag-academic { color: var(--academic-tag); border: 1px solid var(--academic-tag); }
+        .tag-industry { color: var(--industry-tag); border: 1px solid var(--industry-tag); }
+        .tag-advanced { color: var(--advanced-tag); border: 1px solid var(--advanced-tag); }
+
+        .progress-label { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; }
+        .progress-bg { background: var(--bg); height: 12px; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent-blue), var(--success)); transition: 0.6s; }
+
+        .tips-section { margin-top: 60px; padding: 30px; background: var(--card-bg); border: 2px dashed var(--line-color); border-radius: 12px; }
+        .tip-card { background: rgba(255,255,255,0.03); border-left: 4px solid var(--accent-blue); padding: 15px; margin-bottom: 15px; }
+        .tip-title { color: var(--accent-blue); font-weight: bold; display: block; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+
+
+<div class="container">
+    <header>
+        <h1>Complete DSA Mastery 2026</h1>
+        <p style="color: var(--text-dim)">The Full Syllabus (Units 1-8) + Industry Patterns</p>
+    </header>
+
+    <div class="dashboard">
+        <div class="date-container">
+            <div class="date-box">
+                <label>Study Start Date</label>
+                <input type="date" id="startDate" onchange="calculateEndDate()">
+            </div>
+            <div class="date-box">
+                <label>Estimated "Job Ready" Date</label>
+                <span class="end-date-display" id="endDateDisplay">Select a start date</span>
+            </div>
+        </div>
+        <div class="progress-label"><span>Overall Course Mastery</span><span id="perc">0%</span></div>
+        <div class="progress-bg"><div class="progress-fill" id="fill"></div></div>
+    </div>
+
+    <div class="roadmap">
+        <div class="phase">
+            <div class="circle-marker"></div>
+            <div class="card">
+                <span class="phase-id">01. Memory & Foundations</span>
+                <span class="badge">Week 1-2</span>
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" id="u1-1"><span>C: malloc/free, Dynamic Memory & ADTs</span><b class="tag tag-academic">Unit 1</b></li>
+                    <li class="task-item"><input type="checkbox" id="u1-2"><span>Theory: Big O, Omega, Theta & Efficiency</span><b class="tag tag-academic">Unit 1</b></li>
+                    <li class="task-item"><input type="checkbox" id="u1-3"><span>Industry: C++ STL Vector & Memory Safety</span><b class="tag tag-industry">C++</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="phase">
+            <div class="circle-marker"></div>
+            <div class="card">
+                <span class="phase-id">02. Stack & Queue Mastery</span>
+                <span class="badge">Week 3-4</span>
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" id="u2-1"><span>C: Infix to Postfix/Prefix & Evaluation</span><b class="tag tag-academic">Unit 2</b></li>
+                    <li class="task-item"><input type="checkbox" id="u3-1"><span>C: Linear, Circular & Priority Queues</span><b class="tag tag-academic">Unit 3</b></li>
+                    <li class="task-item"><input type="checkbox" id="u3-2"><span>Industry: std::stack & Monotonic Stack pattern</span><b class="tag tag-industry">Industry</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="phase">
+            <div class="circle-marker"></div>
+            <div class="card">
+                <span class="phase-id">03. Linked Lists & Memory Linking</span>
+                <span class="badge">Week 5-6</span>
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" id="u5-1"><span>C: Singly, Doubly, Circular Implementations</span><b class="tag tag-academic">Unit 5</b></li>
+                    <li class="task-item"><input type="checkbox" id="u5-2"><span>C: Stack and Queue as Linked Lists</span><b class="tag tag-academic">Unit 5</b></li>
+                    <li class="task-item"><input type="checkbox" id="u5-3"><span>Pattern: Fast & Slow Pointers (Cycle Detection)</span><b class="tag tag-industry">Pattern</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="phase">
+            <div class="circle-marker"></div>
+            <div class="card">
+                <span class="phase-id">04. Recursion & Sorting Efficiency</span>
+                <span class="badge">Week 7-8</span>
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" id="u4-1"><span>C: Tower of Hanoi, GCD, Fibonacci, Tail Recursion</span><b class="tag tag-academic">Unit 4</b></li>
+                    <li class="task-item"><input type="checkbox" id="u6-1"><span>C: Bubble, Selection, Insertion, Shell Sort</span><b class="tag tag-academic">Unit 6</b></li>
+                    <li class="task-item"><input type="checkbox" id="u6-2"><span>C: Quick, Merge & Heap Sort (Divide & Conquer)</span><b class="tag tag-academic">Unit 6</b></li>
+                    <li class="task-item"><input type="checkbox" id="u6-3"><span>Industry: Intro to Sorting Stability & Custom Comparators</span><b class="tag tag-industry">C++</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="phase">
+            <div class="circle-marker"></div>
+            <div class="card">
+                <span class="phase-id">05. Searching & Hashing</span>
+                <span class="badge">Week 9</span>
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" id="u7-1"><span>C: Sequential vs Binary Search Efficiency</span><b class="tag tag-academic">Unit 7</b></li>
+                    <li class="task-item"><input type="checkbox" id="u7-2"><span>C: Hashing: Tables, Functions & Collision Resolution</span><b class="tag tag-academic">Unit 7</b></li>
+                    <li class="task-item"><input type="checkbox" id="u7-3"><span>Industry: std::unordered_map & Hash Map internals</span><b class="tag tag-industry">C++</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="phase">
+            <div class="circle-marker"></div>
+            <div class="card">
+                <span class="phase-id">06. Nonlinear: Trees & Graphs</span>
+                <span class="badge">Week 10-12</span>
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" id="u8-1"><span>C: BST Operations & AVL Balancing Algorithm</span><b class="tag tag-academic">Unit 8</b></li>
+                    <li class="task-item"><input type="checkbox" id="u8-2"><span>C: Graph Representation, BFS & DFS Traversals</span><b class="tag tag-academic">Unit 8</b></li>
+                    <li class="task-item"><input type="checkbox" id="u8-3"><span>C: Kruskal, Prim (MST) & Dijkstra (Shortest Path)</span><b class="tag tag-academic">Unit 8</b></li>
+                    <li class="task-item"><input type="checkbox" id="u8-4"><span>Industry: Graphs using Adjacency Lists (vector of vectors)</span><b class="tag tag-industry">C++</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="phase">
+            <div class="circle-marker"></div>
+            <div class="card">
+                <span class="phase-id">07. Modern Interview Patterns</span>
+                <span class="badge">Week 13</span>
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" id="ex-1"><span>Sliding Window (Fixed & Variable Size)</span><b class="tag tag-advanced">Advanced</b></li>
+                    <li class="task-item"><input type="checkbox" id="ex-2"><span>Two Pointers & Prefix Sum optimization</span><b class="tag tag-advanced">Advanced</b></li>
+                    <li class="task-item"><input type="checkbox" id="ex-3"><span>Binary Search on Answer Space (Hard level)</span><b class="tag tag-advanced">Advanced</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="phase">
+            <div class="circle-marker"></div>
+            <div class="card">
+                <span class="phase-id">08. Backtracking & Combinatorics</span>
+                <span class="badge">Week 14</span>
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" id="ex-4"><span>Subsets, Permutations & Combinations</span><b class="tag tag-advanced">Advanced</b></li>
+                    <li class="task-item"><input type="checkbox" id="ex-5"><span>N-Queens & Sudoku Solver Logic</span><b class="tag tag-advanced">Advanced</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="phase">
+            <div class="circle-marker"></div>
+            <div class="card">
+                <span class="phase-id">09. Dynamic Programming (DP)</span>
+                <span class="badge">Week 15-16</span>
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" id="ex-6"><span>Memoization vs Tabulation (1D DP)</span><b class="tag tag-advanced">Advanced</b></li>
+                    <li class="task-item"><input type="checkbox" id="ex-7"><span>Knapsack, Coin Change & LCS (2D DP)</span><b class="tag tag-advanced">Advanced</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="phase">
+            <div class="circle-marker"></div>
+            <div class="card">
+                <span class="phase-id">10. Specialized Systems Structures</span>
+                <span class="badge">Week 17</span>
+                <ul class="task-list">
+                    <li class="task-item"><input type="checkbox" id="ex-8"><span>Tries (Prefix Trees) for Auto-complete</span><b class="tag tag-advanced">Advanced</b></li>
+                    <li class="task-item"><input type="checkbox" id="ex-9"><span>Disjoint Set Union (DSU) & Topological Sort</span><b class="tag tag-advanced">Advanced</b></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tips-section">
+        <h2 style="margin-top: 0; color: white;">🚀 Modern Era Success Strategies</h2>
+        
+        <div class="tip-card">
+            <span class="tip-title">Patterns over Problems</span>
+            <p style="margin: 5px 0; font-size: 0.9rem;">Don't memorize 500 individual solutions. Master **Patterns** (Sliding Window, Two Pointers). One pattern solves 50+ problems.</p>
+        </div>
+
+        <div class="tip-card">
+            <span class="tip-title">C (Logic) + C++ (Speed)</span>
+            <p style="margin: 5px 0; font-size: 0.9rem;">Write the data structure in **C** once to understand pointers, then use **C++ STL** for solving problems fast. Companies care about logic, but they hire for speed and C++ knowledge.</p>
+        </div>
+
+        <div class="tip-card">
+            <span class="tip-title">Space-Time Complexity Tradeoffs</span>
+            <p style="margin: 5px 0; font-size: 0.9rem;">Always ask: "Can I make this faster by using more memory?" This is the core of Hashing and Dynamic Programming.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const checks = document.querySelectorAll('input[type="checkbox"]');
+    const bar = document.getElementById('fill');
+    const perc = document.getElementById('perc');
+
+    function calculateEndDate() {
+        const startInput = document.getElementById('startDate');
+        const display = document.getElementById('endDateDisplay');
+        if (startInput.value) {
+            const startDate = new Date(startInput.value);
+            // 17 Weeks Roadmap = 119 Days
+            const endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate() + 119);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            display.innerText = endDate.toLocaleDateString(undefined, options);
+            localStorage.setItem('dsa-start-date-v4', startInput.value);
+        }
+    }
+
+    function updateProgress() {
+        const total = checks.length;
+        const active = document.querySelectorAll('input[type="checkbox"]:checked').length;
+        const p = Math.round((active / total) * 100);
+        bar.style.width = p + '%';
+        perc.innerText = p + '%';
+
+        document.querySelectorAll('.phase').forEach(phase => {
+            const phaseChecks = phase.querySelectorAll('input[type="checkbox"]');
+            const done = Array.from(phaseChecks).every(c => c.checked);
+            if(done && phaseChecks.length > 0) phase.classList.add('completed');
+            else phase.classList.remove('completed');
+        });
+
+        checks.forEach(c => localStorage.setItem('dsa-v4-task-' + c.id, c.checked));
+    }
+
+    window.onload = () => {
+        checks.forEach(c => {
+            if(localStorage.getItem('dsa-v4-task-' + c.id) === 'true') c.checked = true;
+            c.addEventListener('change', updateProgress);
+        });
+
+        const savedDate = localStorage.getItem('dsa-start-date-v4');
+        if (savedDate) {
+            document.getElementById('startDate').value = savedDate;
+            calculateEndDate();
+        }
+        updateProgress();
+    }
+    
+</script>
+</body>
+</html>
