@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+// No. of steps -> (n^2) - 1 
+//Time Complexity -> O(n^2)
+//Space Complexity -> O(n)
 void hanoi(int n, char source, char destination, char auxiliary)
 {
     if (n == 1)    // base case
@@ -8,9 +11,9 @@ void hanoi(int n, char source, char destination, char auxiliary)
         return;
     }
 
-    hanoi(n - 1, source, auxiliary, destination);
+    hanoi(n - 1, source, auxiliary, destination); // move n-1 nunbers of disk source to auxiliry using destination
     printf("Move disk %d from %c to %c\n", n, source, destination);
-    hanoi(n - 1, auxiliary, destination, source);
+    hanoi(n - 1, auxiliary, destination, source);   // move remining(n-1) disk at target from auxiliry using source 
 }
 
 int main()
